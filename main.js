@@ -1,27 +1,40 @@
-let namaVariable = 9
+//1️⃣ Type Conversion 🔚
+let namaVariable1 = "9"
+let namaVariable2 = "3"
+// let convertedVar = Number(namaVariable1)
+// let convertedVar = String(namaVariable1)
 
-// alert(`ini variable bernilai : ${namaVariable}`)
+// + Menjumlahkan String (Concat)
+// Sedangkan -, *, / akan mengubah apapun tipe data nya menjadi number
+let hasil = namaVariable1 - namaVariable2
 
-// alert('ini variable bernilai : ' + namaVariable)
 
-// let variable2 = 'ini string'
-// let namaVariableType = typeof(namaVariable)
-// let variable2Type = typeof(variable2)
+// 2️⃣ If-Else Condition 🔚
+// let nilai = 9
+// if (nilai > 8) 
+//     alert('dapat predikat A')
+// else if (nilai > 6 && nilai < 8) 
+//     alert('dapat predikat B')
+// else 
+//     alert('dapat predikat C')
 
-// if (namaVariableType == 'number') {
-//     alert('ini tipe data adalah number')
-// }
-// else {
-//     alert ('ini bukan number')
-// }
 
-// alert((variable2Type))
+// 3️⃣ Ternary Operator
+// let point = 9 
+// let Results = (point > 8) ? 'Predikat A' : 'Predikat B'
+// // Cara Baca : Kondisi ? 'Jika Benar(IF)' : 'Jika Salah(ELSE)'
+// // let Results = (point > 8) 
+// //     ? 'Predikat A' 
+// //     : 'Predikat B'
+// // alert(Results)
 
-// namaVariable = 'ini nilai';
-// alert(namaVariable)
-
-// let namaVariable = 'ini nilai Variable'
-// alert(namaVariable)  
-
-// alert('ini javascript dari file js')
-// alert('ini alert kedua')
+// 4️⃣ Multiple Ternary Operator
+let point = 7
+let Results = (point > 8) 
+    ? 'Predikat A' 
+    : (point > 7 && point <= 8)
+        ? 'Predikat B' 
+        : (point > 6 && point <= 7)
+            ? 'Predikat C' 
+            : 'Predikat D'
+alert(Results)
