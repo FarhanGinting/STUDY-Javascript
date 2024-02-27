@@ -1,40 +1,53 @@
-//1️⃣ Type Conversion 🔚
-let namaVariable1 = "9"
-let namaVariable2 = "3"
-// let convertedVar = Number(namaVariable1)
-// let convertedVar = String(namaVariable1)
+//1️⃣ Logical Operator OR(||) & AND(&&) 🔚
 
-// + Menjumlahkan String (Concat)
-// Sedangkan -, *, / akan mengubah apapun tipe data nya menjadi number
-let hasil = namaVariable1 - namaVariable2
+let warna  = 'merah'
 
-
-// 2️⃣ If-Else Condition 🔚
-// let nilai = 9
-// if (nilai > 8) 
-//     alert('dapat predikat A')
-// else if (nilai > 6 && nilai < 8) 
-//     alert('dapat predikat B')
-// else 
-//     alert('dapat predikat C')
+// => OR(||) Jika salah satu kondisi terpenuhi = True
+if (warna=='merah' || warna=='biru' || warna=='kuning') {
+    alert('ini warna primer')
+}
+else {
+    alert('ini bukan warna primer')
+}
+//💡 Reminder Help [3:1] 💡
+// if (true || true) = true
+// if (true || false) = true
+// if (false || true) = true
+// if (false || false) = false
 
 
-// 3️⃣ Ternary Operator
-// let point = 9 
-// let Results = (point > 8) ? 'Predikat A' : 'Predikat B'
-// // Cara Baca : Kondisi ? 'Jika Benar(IF)' : 'Jika Salah(ELSE)'
-// // let Results = (point > 8) 
-// //     ? 'Predikat A' 
-// //     : 'Predikat B'
-// // alert(Results)
+// => AND(&&) Jika semua kondisi terpenuhi = True
+if (warna=='merah' && warna=='biru' && warna=='kuning') {
+    alert('ini warna primer')
+}
+else {
+    alert('ini bukan warna primer')
+}
+//💡 Reminder Help [1:3] 💡
+// if (true || true) = true
+// if (true || false) = false
+// if (false || true) = false
+// if (false || false) = false
 
-// 4️⃣ Multiple Ternary Operator
-let point = 7
-let Results = (point > 8) 
-    ? 'Predikat A' 
-    : (point > 7 && point <= 8)
-        ? 'Predikat B' 
-        : (point > 6 && point <= 7)
-            ? 'Predikat C' 
-            : 'Predikat D'
-alert(Results)
+
+//2️⃣ Logical Operator NOT(!) 🔚
+
+let nilai = true
+
+if (nilai != true) {
+    alert('nilanya false')
+}
+else {
+    alert('nilanya true')
+}
+
+
+//3️⃣ Null Coalescing Operator (??) 🔚
+
+let a = null
+let b = undefined
+let c = 'ada nilai'
+
+let hasil = a ?? b ?? c ?? 'whatever'
+
+alert(hasil)
