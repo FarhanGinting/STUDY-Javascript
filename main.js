@@ -1,53 +1,65 @@
-//1️⃣ Logical Operator OR(||) & AND(&&) 🔚
-
-let warna  = 'merah'
-
-// => OR(||) Jika salah satu kondisi terpenuhi = True
-if (warna=='merah' || warna=='biru' || warna=='kuning') {
-    alert('ini warna primer')
+// 1️⃣ Syntax Function Declaration
+function namafunction() {
+    alert('hello ini function')
+    alert('ini function')
 }
-else {
-    alert('ini bukan warna primer')
+namafunction();
+
+
+// 2️⃣ Function With Parameters
+function hitungLuasPersegiPanjang(panjang, lebar) {
+    alert(panjang * lebar)
 }
-//💡 Reminder Help [3:1] 💡
-// if (true || true) = true
-// if (true || false) = true
-// if (false || true) = true
-// if (false || false) = false
+hitungLuasPersegiPanjang(5, 3);
 
 
-// => AND(&&) Jika semua kondisi terpenuhi = True
-if (warna=='merah' && warna=='biru' && warna=='kuning') {
-    alert('ini warna primer')
+// 3️⃣ Local Variable
+function testLocalVariable() {
+    let variable1 = 'test' //💡Local Variable because, declaration inside function💡
+    alert(variable1)
 }
-else {
-    alert('ini bukan warna primer')
+testLocalVariable()
+
+
+// 4️⃣ Global Variable
+let globalVariableTest = "ini global variable"; //💡Global Variable because, declaration not inside function💡
+function testGlobalVariable() {
+    alert(globalVariableTest); //📝because it's a global variable, we can use it in the function📝
 }
-//💡 Reminder Help [1:3] 💡
-// if (true || true) = true
-// if (true || false) = false
-// if (false || true) = false
-// if (false || false) = false
+testGlobalVariable();
 
 
-//2️⃣ Logical Operator NOT(!) 🔚
-
-let nilai = true
-
-if (nilai != true) {
-    alert('nilanya false')
+// 5️⃣ Default Value Parameter
+function hitungLuasSegitiga(alas, tinggi, setengah=0.5) {
+    alert(setengah * alas * tinggi)
 }
-else {
-    alert('nilanya true')
+hitungLuasSegitiga(5, 3);
+
+
+// 6️⃣ Function Return Value
+function hitungKelilingPersegi(sisi) {
+    hasil = sisi * 4
+    return hasil // 📝the use of return value will be very useful because, we can use return value data for various things📝
 }
+// alert(hitungKelilingPersegi(5));
+// console.log(hitungKelilingPersegi(5));
 
+let persegi1 = hitungKelilingPersegi(5)
+let persegi2 = hitungKelilingPersegi(10)
 
-//3️⃣ Null Coalescing Operator (??) 🔚
+alert('persegi panjang 1 luasnya ' + persegi1)
+alert('persegi panjang 2 luasnya ' + persegi2)
 
-let a = null
-let b = undefined
-let c = 'ada nilai'
+// 7️⃣ Function Expression
 
-let hasil = a ?? b ?? c ?? 'whatever'
+    // Function Declaration
+    function thisDeclaration() {
+        alert('This is a function declaration')
+    }
 
-alert(hasil)
+    //⚙️ Function Expression
+    let thisExpression = function(valueA, valueB){ //📝Function expression, has the main difference: it is used by declaring a function and can only be called after it is declared📝
+        alert(valueA + valueB)
+    }
+
+    thisExpression(10, 6)
