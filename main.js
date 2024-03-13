@@ -1,23 +1,20 @@
-// 1️⃣ Syntax Arrow Function
-function testDeclaration() {
-    alert('Ini Function Declaration');
+let text = 'Hello world'
+
+// 1️⃣ Debugging Dengan console log
+function changeText() {
+    text = 'Halo Dunia'
+    changeText2()
+    alert(text)
+    // console.log('isi dari variable text adalah '+text)
 }
-let testExpression = function(){
-    alert('Ini Function Expressions')
+
+// 2️⃣ Debugging Dengan breakpoints
+let changeText2 =  function() {
+    text = 'Halo Coders'
+    return
+    changeText3()
 }
-let testArrowFunction = () => alert('Ini Arrow Functions')
-testArrowFunction()
 
+let changeText3 = () => text = 'Halo Semua!'
 
-// 2️⃣ Arroww Function Dengan Parameter
-let hitungLuasPersegiPanjang = (Panjang, Lebar=2) => alert(Panjang * Lebar)
-hitungLuasPersegiPanjang(6)
-let hitungLuasPersegi = sisi => alert(sisi * sisi) //📝 Jika Hanya 1 parameter, tidak perlu paranteses. sisi ✅ | (sisi) ❌ 📝
-hitungLuasPersegi(3)
-
-
-// 3️⃣ Multi Line Arrow Function
-let multiLineArrow = sisi => {
-    alert(sisi * sisi)
-}
-multiLineArrow(5)
+changeText()
