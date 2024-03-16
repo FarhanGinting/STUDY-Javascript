@@ -1,64 +1,71 @@
-// 1️⃣ Keyword this dalam Object
-let user = {
-    firsName : 'Ben',
-    lastName : 'Ten',
-    getFullname(){
-        return this.firsName + ' ' + this.lastName    // 💡 this Biasanya berada di dalam Function
-                                                      // 📝 this pada contoh di samping merujuk ke user
-                                                      //     Sehingga bisa di baca this.firname == user.firsName
-
-        return this                                   // 💡 Jika hanya menuliskan this. maka akan mengembalikan semua properties yang ada di object
+// 1️⃣ Syntax Class Definition
+class User {
+    // 💡 constructor digunakan untuk perancangan
+    constructor(name, age){
+        this.name = name
+        this.age = age
+    }
+    // 🟢 Setelah menuliskan constructor kita bisa menggunakan data data yang ada ke dalam function
+    SayHi(){
+        console.log('hello '+this.name)
+        console.log('umur nya '+this.age)
     }
 }
-console.log(user.getFullname())
+let ben = new User('ben', 19)
+ben.SayHi()
 
 
 
-// 2️⃣ Keyword this dalam Global Function
-function testFunction() {                               // 💡 Jika menggunakan this bukan di dalam object maka this tersebut merujuk ke level di atasnya object (Windows)
-    return this 
-}
+// 2️⃣ class expression
+let expression = class {
 
-// 🤔 Walaupun this tersebut berada di global function tetap saja tidak bisa mengambil global variable
-// Contohnya seperti di bawah ini : 
-let age = 19
-
-function testFunction() {                               // 💡 Jika menggunakan this bukan di dalam object maka this tersebut merujuk ke level di atasnya object (Windows)
-    return this.age                                     // ❌ Akan Muncul Pesan error Undefined
-    return age                                          // ✅ Tidak akan error
-}
-console.log(testFunction())
-
-
-
-// 3️⃣ Keyword this untuk mencegah salah akses property
-let firsName = 'Josh'
-let lastName = 'Pratama'
-
-let user = {
-        firsName : 'Ben',
-        lastName : 'Ten',
-        getFullname(){
-            return this.firsName + ' ' + this.lastName  // 💡 Maksud salah propery adalah. jika anda sudah tau keyword This akan paham bagaimana untuk mengakses 'Ben' dan 'Ten'            
-            return firsName + ' ' + lastName            // 📝 Namun jika belum paham this, dan anda memanggil nya dengan cara seperti si samping, maka yang di ambil datanya adalah 'Josh' dan 'Pratama'
-
-        }
+    constructor(name, age){
+        this.name = name
+        this.age = age
     }
-console.log(user.getFullname())
 
-// 4️⃣ Keyword this di arrow function
-let firsName = 'Josh'
-let lastName = 'Pratama'
-
-let user = {
-        firsName : 'Ben',
-        lastName : 'Ten',
-        getFullname : () => this.firsName+' '+this.lastName // ❌ Kode salah Karena 💡 Dalam arrow function, anda tidak bisa sembarangan menggunakan keyword this
-                                                            // 📝 Yang jelas this pada arrow function, tidak merujuk ke object namun ke windows (Level di atas object)                                                            
-
-        getFullname : () => user.firsName                   // ✅ Kode benar Karena 💡 Untuk Arrow Function harus menuliskan nama object nya, tidak bisa menggunakan this
-
-        getFullname : () => firsName                         // ⚙️ Sedangkan untuk memanggil variable global bisa langsung menuliskan nama variable nya saja
-
+    SayHi(){
+        console.log('hello '+this.name)
+        console.log('umur nya '+this.age)
     }
-console.log(user.getFullname())
+}
+let ben = new expression ('ben', 21) // 💡 Jika menggunakan expression harus di perhatikan new nya mengikuti nama varibale yang di gunakan
+ben.SayHi()
+
+
+
+// 3️⃣ getter & setter pada class
+// 📝 getter == Mendapatkan sebuah Value
+// 📝 setter  == Membuat sebuah Value
+let expression = class {
+    constructor(name, age) {
+    this._name = name;
+    this._age = age;
+    }
+
+    SayHi() {
+    console.log("hello " + this._name)
+    console.log("umur nya " + this._age)
+    }
+
+    get name() {
+        return this._name
+    }
+    get age() {
+        return this._age
+    }
+    set name(Value){
+        this._name = Value
+    }
+    set age(Value){
+        this._age = Value
+    }
+};
+
+// let ben = new expression ('ben', 21); // ⚙️ Cara constructor | 💡 ketika tidak menggunakan getter & setter pada class 
+// ben.SayHi()                           //   kita tidak perlu lagi mengirimkan data ke parameter
+
+let ben = new expression();              // ⚙️ Cara getter & setter |💡 Ketika sudah mengg getter & setter pada class
+ben.name = 'ben'             
+ben.age = 19            //     cukup langsung akses properties nya dan kasih value
+ben.SayHi();                            
