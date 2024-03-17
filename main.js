@@ -1,71 +1,90 @@
-// 1️⃣ Syntax Class Definition
-class User {
-    // 💡 constructor digunakan untuk perancangan
-    constructor(name, age){
+// 1️⃣ Syntax & Contoh Class Inheritance
+class Animal {
+    constructor(name){
         this.name = name
-        this.age = age
     }
-    // 🟢 Setelah menuliskan constructor kita bisa menggunakan data data yang ada ke dalam function
-    SayHi(){
-        console.log('hello '+this.name)
-        console.log('umur nya '+this.age)
+
+    speak(){
+        console.log(`${this.name} Makes A Sound.`)
+    }
+
+    move(){
+        console.log(`${this.name}  Makes A Move`)
     }
 }
-let ben = new User('ben', 19)
-ben.SayHi()
+
+class Dog extends Animal {              //💡 Kelas Dog punya parent Animal (Di tandai dengan Kata Kunci = "extends" )
+
+}
+
+let dog = new Dog('Bob')
+dog.speak()
+dog.move()
 
 
 
-// 2️⃣ class expression
-let expression = class {
-
-    constructor(name, age){
+// 2️⃣ Membuat Function di class turunan
+class Animal {
+    constructor(name){
         this.name = name
-        this.age = age
     }
 
-    SayHi(){
-        console.log('hello '+this.name)
-        console.log('umur nya '+this.age)
+    speak(){
+        console.log(`${this.name} Makes A Sound.`)
+    }
+
+    move(){
+        console.log(`${this.name}  Makes A Move`)
     }
 }
-let ben = new expression ('ben', 21) // 💡 Jika menggunakan expression harus di perhatikan new nya mengikuti nama varibale yang di gunakan
-ben.SayHi()
+
+class Dog extends Animal {
+    jump(){
+        console.log((`${this.name} jumps with happay Face`));
+    }
+    speak(){
+        super.speak()
+        console.log((`${this.name} is barking right now`));
+    }
+}
+
+let dog = new Dog('Bob')
+dog.speak()
+dog.move()
+dog.jump()
 
 
 
-// 3️⃣ getter & setter pada class
-// 📝 getter == Mendapatkan sebuah Value
-// 📝 setter  == Membuat sebuah Value
-let expression = class {
-    constructor(name, age) {
-    this._name = name;
-    this._age = age;
+// 3️⃣ Override Constructor
+class Animal {
+    constructor(name){
+        this.name = name
     }
 
-    SayHi() {
-    console.log("hello " + this._name)
-    console.log("umur nya " + this._age)
+    speak(){
+        console.log(`${this.name} Makes A Sound.`)
     }
 
-    get name() {
-        return this._name
+    move(){
+        console.log(`${this.name}  Makes A Move`)
     }
-    get age() {
-        return this._age
+}
+class Dog extends Animal {
+    constructor(name, breed){
+        super(name)
+        this.breed = breed
     }
-    set name(Value){
-        this._name = Value
+    jump(){
+        console.log((`${this.name} wich breed is ${this.breed} jumping with happay Face`));
     }
-    set age(Value){
-        this._age = Value
+    speak(){
+        super.speak()
+        console.log((`${this.name} is barking right now`));
     }
-};
+}
 
-// let ben = new expression ('ben', 21); // ⚙️ Cara constructor | 💡 ketika tidak menggunakan getter & setter pada class 
-// ben.SayHi()                           //   kita tidak perlu lagi mengirimkan data ke parameter
-
-let ben = new expression();              // ⚙️ Cara getter & setter |💡 Ketika sudah mengg getter & setter pada class
-ben.name = 'ben'             
-ben.age = 19            //     cukup langsung akses properties nya dan kasih value
-ben.SayHi();                            
+let dog = new Dog('Bob', 'Chihuahua')
+dog.speak()
+dog.move()
+dog.jump()
+console.log(dog.breed)
