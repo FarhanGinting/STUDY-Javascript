@@ -1,90 +1,60 @@
-// 1️⃣ Syntax & Contoh Class Inheritance
-class Animal {
-    constructor(name){
-        this.name = name
-    }
-
-    speak(){
-        console.log(`${this.name} Makes A Sound.`)
-    }
-
-    move(){
-        console.log(`${this.name}  Makes A Move`)
-    }
-}
-
-class Dog extends Animal {              //💡 Kelas Dog punya parent Animal (Di tandai dengan Kata Kunci = "extends" )
-
-}
-
-let dog = new Dog('Bob')
-dog.speak()
-dog.move()
-
-
-
-// 2️⃣ Membuat Function di class turunan
-class Animal {
-    constructor(name){
-        this.name = name
-    }
-
-    speak(){
-        console.log(`${this.name} Makes A Sound.`)
-    }
-
-    move(){
-        console.log(`${this.name}  Makes A Move`)
+// 1️⃣ Sintaks try and catch
+function test() {
+    try {
+        let lolos = true
+        if (lolos) {
+            alert("Selamat, anda lolos ke tahap berikutnya");
+        }   
+        else {
+            alert("Jangan Menyerah");
+        }
+    } catch (error) {
+        alert('ada kesalahan, silahkan kontak administrator')
     }
 }
-
-class Dog extends Animal {
-    jump(){
-        console.log((`${this.name} jumps with happay Face`));
-    }
-    speak(){
-        super.speak()
-        console.log((`${this.name} is barking right now`));
-    }
-}
-
-let dog = new Dog('Bob')
-dog.speak()
-dog.move()
-dog.jump()
+test();
 
 
 
-// 3️⃣ Override Constructor
-class Animal {
-    constructor(name){
-        this.name = name
-    }
-
-    speak(){
-        console.log(`${this.name} Makes A Sound.`)
-    }
-
-    move(){
-        console.log(`${this.name}  Makes A Move`)
+// 2️⃣ Parameter pada catch
+function test() {
+    try {
+        if (lolos) {
+            alert("Selamat, anda lolos ke tahap berikutnya");
+        }   
+        else {
+            alert("Jangan Menyerah");
+        }
+    } catch (error) {
+        alert('ada kesalahan, silahkan kontak administrator')
+        console.log(error.name);   // = ReferenceError
+        console.log(error.message) // = lolos is not defined
+        console.log(error.stack)   // = ReferenceError: lolos is not defined
+        console.log(error)         // = ReferenceError: lolos is not defined
     }
 }
-class Dog extends Animal {
-    constructor(name, breed){
-        super(name)
-        this.breed = breed
+test();
+
+
+
+// 3️⃣ finally dan cara kerjanya
+function test() {
+    try {
+        if (lolos) {
+            alert("Selamat, anda lolos ke tahap berikutnya");
+        }   
+        else {
+            alert("Jangan Menyerah");
+        }
+    } catch (error) {
+        alert('ada kesalahan, silahkan kontak administrator')
+        alert(error.name);   
+        alert(error.message) 
+        alert(error.stack)   
+        alert(error)
     }
-    jump(){
-        console.log((`${this.name} wich breed is ${this.breed} jumping with happay Face`));
-    }
-    speak(){
-        super.speak()
-        console.log((`${this.name} is barking right now`));
+    finally {
+        alert('Ini finally, yang akan di run walaupun kondisi error atau pun berhasil')
     }
 }
-
-let dog = new Dog('Bob', 'Chihuahua')
-dog.speak()
-dog.move()
-dog.jump()
-console.log(dog.breed)
+test();
