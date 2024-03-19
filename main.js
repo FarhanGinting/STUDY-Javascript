@@ -1,60 +1,40 @@
-// 1️⃣ Sintaks try and catch
-function test() {
-    try {
-        let lolos = true
-        if (lolos) {
-            alert("Selamat, anda lolos ke tahap berikutnya");
-        }   
-        else {
-            alert("Jangan Menyerah");
-        }
-    } catch (error) {
-        alert('ada kesalahan, silahkan kontak administrator')
-    }
+// 1️⃣ Contoh Sederhana Callback (Didalam function memanggil function lain)
+function callData(callback) {
+    console.log('ini function call data')
+    callback()
 }
-test();
 
-
-
-// 2️⃣ Parameter pada catch
-function test() {
-    try {
-        if (lolos) {
-            alert("Selamat, anda lolos ke tahap berikutnya");
-        }   
-        else {
-            alert("Jangan Menyerah");
-        }
-    } catch (error) {
-        alert('ada kesalahan, silahkan kontak administrator')
-        console.log(error.name);   // = ReferenceError
-        console.log(error.message) // = lolos is not defined
-        console.log(error.stack)   // = ReferenceError: lolos is not defined
-        console.log(error)         // = ReferenceError: lolos is not defined
-    }
+function showData() {
+    console.log('ini function show data')
 }
-test();
+
+callData(showData) // 📝 Pada baris ini lah peran callback digunakan, yaitu memberikan parameter function yang akan dipanggil
+                   // 📝 CallData di panggil dengan membawa function showData (callback == showData)
 
 
 
-// 3️⃣ finally dan cara kerjanya
-function test() {
-    try {
-        if (lolos) {
-            alert("Selamat, anda lolos ke tahap berikutnya");
-        }   
-        else {
-            alert("Jangan Menyerah");
-        }
-    } catch (error) {
-        alert('ada kesalahan, silahkan kontak administrator')
-        alert(error.name);   
-        alert(error.message) 
-        alert(error.stack)   
-        alert(error)
-    }
-    finally {
-        alert('Ini finally, yang akan di run walaupun kondisi error atau pun berhasil')
-    }
+// 2️⃣ Callback untuk merge data
+let defaultsStudent = ['ben', 'josh', 'meg']
+//⚙️ Contoh Studi Kasus Sederhana merge data student ⬇️
+// studentFromDatabase + defaultStudent
+// function get data from database
+function getDataFromDatabase(callback) {
+    setTimeout(() => {
+        let students = ['bob', 'todd', 'jill']
+
+        callback(students) // 💡 Parameter tersebut harus sama dengan variable yang menyimpan data datanya
+                           //     Contoh nya let students == maka parameter nya harus students
+    }, 2000);
 }
-test();
+
+// function gabung data default + data dari database
+function mergeStudent(data) { // 💡 Data adalah parameter yang menuju ke students
+    let result = defaultsStudent.concat(data)
+    console.log(result);
+    // ❗ Maka jika di baca alur programnya akan seperti ini :
+    //     -> Memanggil function getDataFromDatabase(dengan membawa parameter mergeStudent) 
+    //     -> Kemudian proses pengolahan dari database, dan di simpan ke variable students dan callback (student) 
+    //     -> Terakhir memanggil function mergeStudent dengan parameter data yang menuju ke students, dan dilakukan penggabungan data defaultStudent dengan student menggunakan function Concat
+}
+
+getDataFromDatabase(mergeStudent)
