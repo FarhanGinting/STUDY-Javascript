@@ -1,40 +1,25 @@
-// 1️⃣ Contoh Sederhana Callback (Didalam function memanggil function lain)
-function callData(callback) {
-    console.log('ini function call data')
-    callback()
-}
+// 1️⃣ Perbedaan asynchronous(Tidak berurutan, bisa di atur baris mana yang ingin di eksekusi dan di lompati)(Yang lebih cepat selesai, maka itu ditampilkan duluan) dan synchronous(Berurutan, dari atas ke bawah)
+// 💡 Pengertian => Sebagai metode dalam menjalankan sebuah program JavaScript
+//    Secara default program JavaScript menjalankan sistem menggunakan metode "synchronous"
 
-function showData() {
-    console.log('ini function show data')
-}
-
-callData(showData) // 📝 Pada baris ini lah peran callback digunakan, yaitu memberikan parameter function yang akan dipanggil
-                   // 📝 CallData di panggil dengan membawa function showData (callback == showData)
+console.log('Progress 1')
+console.log('Progress 2')
+console.log('Progress 3') // 💡 synchronous  => Jika pada progress 3 sangat lama, akan terus menunggu nya sampai selesai baru, jalan ke progress 4
+                          //     asynchronous => Jika pada progress 3 sanget lama, maka akan dibiarkan mengelola dibelakang layar, dan lanjut ke progress 4
+console.log('Progress 4')
+console.log('Progress 5')
 
 
 
-// 2️⃣ Callback untuk merge data
-let defaultsStudent = ['ben', 'josh', 'meg']
-//⚙️ Contoh Studi Kasus Sederhana merge data student ⬇️
-// studentFromDatabase + defaultStudent
-// function get data from database
-function getDataFromDatabase(callback) {
-    setTimeout(() => {
-        let students = ['bob', 'todd', 'jill']
-
-        callback(students) // 💡 Parameter tersebut harus sama dengan variable yang menyimpan data datanya
-                           //     Contoh nya let students == maka parameter nya harus students
-    }, 2000);
-}
-
-// function gabung data default + data dari database
-function mergeStudent(data) { // 💡 Data adalah parameter yang menuju ke students
-    let result = defaultsStudent.concat(data)
-    console.log(result);
-    // ❗ Maka jika di baca alur programnya akan seperti ini :
-    //     -> Memanggil function getDataFromDatabase(dengan membawa parameter mergeStudent) 
-    //     -> Kemudian proses pengolahan dari database, dan di simpan ke variable students dan callback (student) 
-    //     -> Terakhir memanggil function mergeStudent dengan parameter data yang menuju ke students, dan dilakukan penggabungan data defaultStudent dengan student menggunakan function Concat
-}
-
-getDataFromDatabase(mergeStudent)
+// 2️⃣ Contoh metode asynchronous
+console.log('Progress 1')
+console.log('Progress 2')
+setTimeout(() => {
+    console.log('Progress 3') // progress import data membutuhkan waktu, jadi biarin aja, lanjut ke progress selanjutnya
+}, 3000);
+console.log('Progress 4')
+console.log('Progress 5')
+// 📝 Contoh penggunaan asynchronous :
+//      • Callback
+//      • Promise
+//      • async await
