@@ -1,58 +1,39 @@
-// 1️⃣ Penjelasan syntax promise 
+// 1️⃣ Study Kasus (Menghitung total siswa dari kelas a dan b)
+function getData() {
+    let totalClassA = new Promise(function(resolve, reject) {
+        setTimeout(() => {
+            resolve(30)
+        }, 2000);
+    })
 
-let promise = new Promise(function(resolve, reject) { // Ini pihak pertama 
-    // Tempat menuliskan kode
-    let result = true
-    result ? resolve('Proses Berhasil') : reject('Preses Tidak Berhasil')
+    let totalClassB = new Promise(function(resolve, reject) {
+        setTimeout(() => {
+            resolve(35)
+        }, 2000);
+    })
 
-    if (result) {
-        resolve('berhasil == resolve')
-    }
-    else {
-        reject('ada yang error')
-    }
-})
-
-
-
-// 2️⃣ get hasil promise untuk consumer
-promise.then(
-    result => console.log('ini adalah resolve '+result), // 💡 Secara default parameter pertama adalah resolve promise
-    error => console.log('ini adalah reject '+error), //       Sedangkan parameter kedua adalah bagian reject promise
-)
+    let total = totalClassA + totalClassB // belum punya nilai + belum punya nilai (object promise)
+    console.log(total)                    // Karena console.log tidak membutuhkan waktu, sehinggan data totalClassA dan totalClassB belum di dapatkan (setTimeout)
+}
+getData()
 
 
+// 2️⃣ Syntax & contoh async await
+async function getData() {
+    let totalClassA = new Promise(function(resolve, reject) {
+        setTimeout(() => {
+            resolve(30)
+        }, 2000);
+    })
 
-// 3️⃣ then-catch pada promise
-promise
-.then(
-    result => console.log('ini adalah resolve '+result), // 💡 Secara default parameter pertama adalah resolve promise
-                                                        //       Sedangkan parameter kedua adalah bagian reject promise
-)
-.catch(
-    error => console.log('ini adalah reject '+error),
-)
+    let totalClassB = new Promise(function(resolve, reject) {
+        setTimeout(() => {
+            resolve(35)
+        }, 2000);
+    })
 
+    let total = await totalClassA + await totalClassB // 💡 ketika sudah diberikan await maka script akan berhenti di situ, dan jalan kembali ketika sudah mendapatkan nilai
 
-
-// 4️⃣ chained promise
-
-let promise = new Promise(function(resolve, reject) { // Ini pihak pertama 
-    // Tempat menuliskan kode
-    resolve(2)
-})
-
-promise.then(
-    result => {
-        console.log(result) // 2
-        return result * 2 //  4
-    }
-
-).then(
-    result => {
-        console.log(result) // 4
-        result => {
-            console.log(result)
-        }
-    }
-)
+    console.log(total)                                // 📝 Harus menunggu dulu sampai selesai perhitungan total
+}
+getData()
